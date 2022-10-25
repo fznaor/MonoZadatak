@@ -1,0 +1,14 @@
+C:\Users\korisnik\source\repos\MonoZadatak\Project.Service\bin\Debug\net6.0\Project.Service.deps.json
+C:\Users\korisnik\source\repos\MonoZadatak\Project.Service\bin\Debug\net6.0\Project.Service.runtimeconfig.json
+C:\Users\korisnik\source\repos\MonoZadatak\Project.Service\bin\Debug\net6.0\Project.Service.dll
+C:\Users\korisnik\source\repos\MonoZadatak\Project.Service\bin\Debug\net6.0\Project.Service.pdb
+C:\Users\korisnik\source\repos\MonoZadatak\Project.Service\obj\Debug\net6.0\Project.Service.csproj.AssemblyReference.cache
+C:\Users\korisnik\source\repos\MonoZadatak\Project.Service\obj\Debug\net6.0\Project.Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\korisnik\source\repos\MonoZadatak\Project.Service\obj\Debug\net6.0\Project.Service.AssemblyInfoInputs.cache
+C:\Users\korisnik\source\repos\MonoZadatak\Project.Service\obj\Debug\net6.0\Project.Service.AssemblyInfo.cs
+C:\Users\korisnik\source\repos\MonoZadatak\Project.Service\obj\Debug\net6.0\Project.Service.csproj.CoreCompileInputs.cache
+C:\Users\korisnik\source\repos\MonoZadatak\Project.Service\obj\Debug\net6.0\Project.Service.dll
+C:\Users\korisnik\source\repos\MonoZadatak\Project.Service\obj\Debug\net6.0\refint\Project.Service.dll
+C:\Users\korisnik\source\repos\MonoZadatak\Project.Service\obj\Debug\net6.0\Project.Service.pdb
+C:\Users\korisnik\source\repos\MonoZadatak\Project.Service\obj\Debug\net6.0\Project.Service.genruntimeconfig.cache
+C:\Users\korisnik\source\repos\MonoZadatak\Project.Service\obj\Debug\net6.0\ref\Project.Service.dll
