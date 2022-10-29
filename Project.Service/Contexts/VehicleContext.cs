@@ -9,10 +9,15 @@ namespace Project.Service
 {
     public class VehicleContext : DbContext, IVehicleContext
     {
-        public DbSet<VehicleMake> Makes { get; set; }
-        public DbSet<VehicleModel> Models { get; set; }
+        public DbSet<VehicleMakeEntity> Makes { get; set; }
+        public DbSet<VehicleModelEntity> Models { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             => optionsBuilder.UseNpgsql("Host=localhost;Database=vehicles;Username=postgres;Password=password");
+
+        async Task<int> IVehicleContext.SaveChangesAsync()
+        {
+            return await SaveChangesAsync();
+        }
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Project.Service
 {
     [Table("VehicleModels")]
-    public class VehicleModel
+    public class VehicleModelEntity
     { 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -24,6 +24,6 @@ namespace Project.Service
         [Required]
         public string Abbreviation { get; set; }
 
-        public VehicleMake Make { get; set; }
+        public VehicleMakeEntity Make { get; set; }
     }
 }

@@ -32,3 +32,5 @@ C:\Users\korisnik\source\repos\MonoZadatak\Test\bin\Debug\net6.0\Npgsql.dll
 C:\Users\korisnik\source\repos\MonoZadatak\Test\bin\Debug\net6.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 C:\Users\korisnik\source\repos\MonoZadatak\Test\bin\Debug\net6.0\Project.Service.dll
 C:\Users\korisnik\source\repos\MonoZadatak\Test\bin\Debug\net6.0\Project.Service.pdb
+C:\Users\korisnik\source\repos\MonoZadatak\Test\bin\Debug\net6.0\Ninject.dll
+C:\Users\korisnik\source\repos\MonoZadatak\Test\bin\Debug\net6.0\AutoMapper.dll

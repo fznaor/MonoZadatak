@@ -9,7 +9,9 @@ namespace Project.Service
 {
     public interface IVehicleContext
     {
-        DbSet<VehicleMake> Makes { get; set; }
-        DbSet<VehicleModel> Models { get; set; }
+        DbSet<VehicleMakeEntity> Makes { get; set; }
+        DbSet<VehicleModelEntity> Models { get; set; }
+
+        Task<int> SaveChangesAsync();
     }
 }
