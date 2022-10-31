@@ -12,20 +12,29 @@ class Test
         var kernel = new StandardKernel(new INinjectModule[] { new DIModule(), new AutoMapperModule() });
         var service = kernel.Get<IVehicleService>();
 
-        List<IVehicleMake> makes = await service.GetAllMakes();
-        foreach(IVehicleMake m in makes)
+        try
         {
-            Console.WriteLine(m.Name);
-        }
+            List<IVehicleMake> makes = await service.GetAllMakes();
+            foreach (IVehicleMake m in makes)
+            {
+                Console.WriteLine(m.Name);
+            }
 
-        Console.WriteLine();
-        List<IVehicleModel> makesVW = await service.GetAllModelsByMake(1);
-        foreach(IVehicleModel m in makesVW)
+            Console.WriteLine();
+            List<IVehicleModel> makesVW = await service.GetAllModelsByMake(1);
+            foreach (IVehicleModel m in makesVW)
+            {
+                Console.WriteLine(m.Name);
+            }
+
+            await service.AddMake(new VehicleMake { VehicleMakeId = 1, Name = "Lamborghini", Abbreviation = "LAM" });
+        }
+        catch (Exception ex)
         {
-            Console.WriteLine(m.Name);
+            Console.WriteLine(ex.Message);
         }
+        // await service.AddModel(new VehicleModel { MakeId = 10, Name = "Gallardo", Abbreviation = "GAL" });
 
-        await service.AddMake(new VehicleMake { Name = "Lamborghini", Abbreviation = "LAM" });
-        await service.AddModel(new VehicleModel { MakeId = 10, Name = "Gallardo", Abbreviation = "GAL" });
+        // await service.UpdateMake(new VehicleMake { VehicleMakeId = 10, Name = "Lambo", Abbreviation = "LBO" });
     }
 }
