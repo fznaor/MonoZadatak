@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.Extensions.DependencyInjection;
 using Ninject;
 using Ninject.Modules;
 using Project.Service;
@@ -14,27 +15,35 @@ class Test
 
         try
         {
-            List<IVehicleMake> makes = await service.GetAllMakes();
+            PaginatedList<IVehicleMake> makes = await service.GetAllMakes(new SortSettings("Name", true), "", new PaginationSettings(1, 5));
+            Console.WriteLine("Page {0} of {1}", makes.PageIndex, makes.TotalPages);
             foreach (IVehicleMake m in makes)
             {
                 Console.WriteLine(m.Name);
             }
-
             Console.WriteLine();
-            List<IVehicleModel> makesVW = await service.GetAllModelsByMake(1);
-            foreach (IVehicleModel m in makesVW)
+
+            PaginatedList<IVehicleModel> models = await service.GetAllModels(new SortSettings("Name", true), "", new PaginationSettings(1, 25));
+            Console.WriteLine("Page {0} of {1}", models.PageIndex, models.TotalPages);
+            foreach (IVehicleModel m in models)
+            {
+                Console.WriteLine(m.Name);
+            }
+            Console.WriteLine();
+
+            PaginatedList<IVehicleModel> modelsVW = await service.GetAllModelsByMake(1, new SortSettings("Name", true), "u", new PaginationSettings(1, 5));
+            Console.WriteLine("Page {0} of {1}", modelsVW.PageIndex, modelsVW.TotalPages);
+            foreach (IVehicleModel m in modelsVW)
             {
                 Console.WriteLine(m.Name);
             }
 
-            await service.AddMake(new VehicleMake { VehicleMakeId = 1, Name = "Lamborghini", Abbreviation = "LAM" });
+            await service.AddMake(new VehicleMake { Name = "Maserati", Abbreviation = "MAS" });
+
         }
         catch (Exception ex)
         {
             Console.WriteLine(ex.Message);
         }
-        // await service.AddModel(new VehicleModel { MakeId = 10, Name = "Gallardo", Abbreviation = "GAL" });
-
-        // await service.UpdateMake(new VehicleMake { VehicleMakeId = 10, Name = "Lambo", Abbreviation = "LBO" });
     }
 }

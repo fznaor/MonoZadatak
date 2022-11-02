@@ -22,9 +22,9 @@ namespace Project.Service
                 cfg.CreateMap<VehicleModelEntity, VehicleModel>().ReverseMap();
                 cfg.CreateMap<IVehicleMake, VehicleMake>().ReverseMap();
                 cfg.CreateMap<IVehicleModel, VehicleModel>().ReverseMap();
-                cfg.CreateMap<IVehicleMake, VehicleMakeEntity>().ReverseMap();
-                cfg.CreateMap<IVehicleModel, VehicleModelEntity>().ReverseMap();
             });
+
+            config.AssertConfigurationIsValid();
 
             return new Mapper(config);
         }
