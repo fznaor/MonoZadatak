@@ -11,5 +11,6 @@ namespace Project.Service
         int VehicleMakeId { get; set; }
         string Name { get; set; }
         string Abbreviation { get; set; }
+        ICollection<VehicleModelEntity> Models { get; set; }
     }
 }

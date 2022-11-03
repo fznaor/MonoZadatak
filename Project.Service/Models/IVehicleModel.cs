@@ -12,5 +12,6 @@ namespace Project.Service
         int MakeId { get; set; }
         string Name { get; set; }
         string Abbreviation { get; set; }
+        VehicleMakeEntity Make { get; set; }
     }
 }

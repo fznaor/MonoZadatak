@@ -12,7 +12,8 @@ namespace Project.Service
         public override void Load()
         {
             this.Bind<IVehicleContext>().To<VehicleContext>();
-            this.Bind<IVehicleService>().To<VehicleService>();
+            this.Bind<IVehicleMakeService>().To<VehicleMakeService>();
+            this.Bind<IVehicleModelService>().To<VehicleModelService>();
         }
     }
 }
