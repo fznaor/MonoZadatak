@@ -1,5 +1,5 @@
-﻿using AutoMapper;
-using Ninject.Modules;
+﻿using Autofac;
+using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,25 +8,27 @@ using System.Threading.Tasks;
 
 namespace Project.Service
 {
-    public class AutoMapperModule : NinjectModule
+    public class AutoMapperModule : Module
     {
-        public override void Load()
+        protected override void Load(ContainerBuilder builder)
         {
-            Bind<IMapper>().ToMethod(AutoMapper).InSingletonScope();
-        }
-
-        private IMapper AutoMapper(Ninject.Activation.IContext context)
-        {
-            var config = new MapperConfiguration(cfg => {
+            builder.Register(context => new MapperConfiguration(cfg =>
+            {
                 cfg.CreateMap<VehicleMakeEntity, VehicleMake>().ReverseMap();
                 cfg.CreateMap<VehicleModelEntity, VehicleModel>().ReverseMap();
                 cfg.CreateMap<IVehicleMake, VehicleMake>().ReverseMap();
                 cfg.CreateMap<IVehicleModel, VehicleModel>().ReverseMap();
-            });
 
-            config.AssertConfigurationIsValid();
+            })).AsSelf().SingleInstance();
 
-            return new Mapper(config);
+            builder.Register(c =>
+            {
+                var context = c.Resolve<IComponentContext>();
+                var config = context.Resolve<MapperConfiguration>();
+                return config.CreateMapper(context.Resolve);
+
+
+            }).As<IMapper>().InstancePerLifetimeScope();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Ninject.Modules;
+﻿using Autofac;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Project.Service
 {
-    public class DIModule : NinjectModule
+    public class DIModule : Module
     {
-        public override void Load()
+        protected override void Load(ContainerBuilder builder)
         {
-            this.Bind<IVehicleContext>().To<VehicleContext>();
-            this.Bind<IVehicleMakeService>().To<VehicleMakeService>();
-            this.Bind<IVehicleModelService>().To<VehicleModelService>();
+            builder.RegisterType<VehicleContext>().As<IVehicleContext>();
+            builder.RegisterType<VehicleMakeService>().As<IVehicleMakeService>();
+            builder.RegisterType<VehicleModelService>().As<IVehicleModelService>();
         }
     }
 }

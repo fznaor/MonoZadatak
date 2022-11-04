@@ -30,22 +30,7 @@ namespace Project.Service
                     data = data.Where(m => m.Name.ToUpper().Contains(searchTerm.ToUpper()));
                 }
 
-                if (sortSettings.SortBy == "Name" && sortSettings.SortAscending)
-                {
-                    data = data.OrderBy(m => m.Name);
-                }
-                else if(sortSettings.SortBy == "Name" && !sortSettings.SortAscending)
-                {
-                    data = data.OrderByDescending(m => m.Name);
-                }
-                else if (sortSettings.SortBy == "Abbreviation" && sortSettings.SortAscending)
-                {
-                    data = data.OrderBy(m => m.Abbreviation);
-                }
-                else if (sortSettings.SortBy == "Abbreviation" && !sortSettings.SortAscending)
-                {
-                    data = data.OrderByDescending(m => m.Abbreviation);
-                }
+                data = SortMakes(data, sortSettings);
 
                 var count = await data.CountAsync();
                 var items = await data.Skip((paginationSettings.PageNumber - 1) * paginationSettings.PageSize).Take(paginationSettings.PageSize).ToListAsync();
@@ -57,6 +42,33 @@ namespace Project.Service
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
+            }
+        }
+
+        public IQueryable<VehicleMakeEntity> SortMakes(IQueryable<VehicleMakeEntity> data, SortSettings settings)
+        {
+            switch (settings.SortBy)
+            {
+                case "Name" :
+                    if (settings.SortAscending)
+                    {
+                        return data.OrderBy(m => m.Name);
+                    }
+                    else
+                    {
+                        return data.OrderByDescending(m => m.Name);
+                    }
+                case "Abbreviation":
+                    if (settings.SortAscending)
+                    {
+                        return data.OrderBy(m => m.Abbreviation);
+                    }
+                    else
+                    {
+                        return data.OrderByDescending(m => m.Abbreviation);
+                    }
+                default:
+                    return data;
             }
         }
 

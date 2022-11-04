@@ -1,7 +1,6 @@
-﻿using AutoMapper;
+﻿using Autofac;
+using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
-using Ninject;
-using Ninject.Modules;
 using Project.Service;
 using System.Reflection;
 
@@ -10,9 +9,12 @@ class Test
 
     static async Task Main(String[] args)
     {
-        var kernel = new StandardKernel(new INinjectModule[] { new DIModule(), new AutoMapperModule() });
-        var makeService = kernel.Get<IVehicleMakeService>();
-        var modelService = kernel.Get<IVehicleModelService>();
+        var builder = new ContainerBuilder();
+        builder.RegisterModule(new AutoMapperModule());
+        builder.RegisterModule(new DIModule());
+        var container = builder.Build();
+        var makeService = container.Resolve<IVehicleMakeService>();
+        var modelService = container.Resolve<IVehicleModelService>();
 
         try
         {

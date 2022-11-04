@@ -25,31 +25,8 @@ namespace Project.Service
             {
                 var data = from m in _context.Models select m;
 
-                if (!string.IsNullOrEmpty(filter.NameFilter))
-                {
-                    data = data.Where(m => m.Name.ToUpper().Contains(filter.NameFilter.ToUpper()));
-                }
-                if (!string.IsNullOrEmpty(filter.MakeFilter))
-                {
-                    data = data.Where(m => m.Make.Name.ToUpper().Contains(filter.MakeFilter.ToUpper()));
-                }
-
-                if (sortSettings.SortBy == "Name" && sortSettings.SortAscending)
-                {
-                    data = data.OrderBy(m => m.Name);
-                }
-                else if (sortSettings.SortBy == "Name" && !sortSettings.SortAscending)
-                {
-                    data = data.OrderByDescending(m => m.Name);
-                }
-                else if (sortSettings.SortBy == "Abbreviation" && sortSettings.SortAscending)
-                {
-                    data = data.OrderBy(m => m.Abbreviation);
-                }
-                else if (sortSettings.SortBy == "Abbreviation" && !sortSettings.SortAscending)
-                {
-                    data = data.OrderByDescending(m => m.Abbreviation);
-                }
+                data = FilterModels(data, filter);
+                data = SortModels(data, sortSettings);
 
                 var count = await data.CountAsync();
                 var items = await data.Include(m => m.Make).Skip((paginationSettings.PageNumber - 1) * paginationSettings.PageSize).Take(paginationSettings.PageSize).ToListAsync();
@@ -61,6 +38,46 @@ namespace Project.Service
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
+            }
+        }
+
+        public IQueryable<VehicleModelEntity> FilterModels(IQueryable<VehicleModelEntity> data, VehicleModelFilter filter)
+        {
+            if (!string.IsNullOrEmpty(filter.NameFilter))
+            {
+                data = data.Where(m => m.Name.ToUpper().Contains(filter.NameFilter.ToUpper()));
+            }
+            if (!string.IsNullOrEmpty(filter.MakeFilter))
+            {
+                data = data.Where(m => m.Make.Name.ToUpper().Contains(filter.MakeFilter.ToUpper()));
+            }
+            return data;
+        }
+
+        public IQueryable<VehicleModelEntity> SortModels(IQueryable<VehicleModelEntity> data, SortSettings settings)
+        {
+            switch (settings.SortBy)
+            {
+                case "Name":
+                    if (settings.SortAscending)
+                    {
+                        return data.OrderBy(m => m.Name);
+                    }
+                    else
+                    {
+                        return data.OrderByDescending(m => m.Name);
+                    }
+                case "Abbreviation":
+                    if (settings.SortAscending)
+                    {
+                        return data.OrderBy(m => m.Abbreviation);
+                    }
+                    else
+                    {
+                        return data.OrderByDescending(m => m.Abbreviation);
+                    }
+                default:
+                    return data;
             }
         }
 

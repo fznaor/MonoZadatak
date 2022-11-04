@@ -3,10 +3,10 @@ C:\Users\korisnik\source\repos\MonoZadatak\Test\bin\Debug\net6.0\Test.deps.json
 C:\Users\korisnik\source\repos\MonoZadatak\Test\bin\Debug\net6.0\Test.runtimeconfig.json
 C:\Users\korisnik\source\repos\MonoZadatak\Test\bin\Debug\net6.0\Test.dll
 C:\Users\korisnik\source\repos\MonoZadatak\Test\bin\Debug\net6.0\Test.pdb
-C:\Users\korisnik\source\repos\MonoZadatak\Test\bin\Debug\net6.0\Humanizer.dll
+C:\Users\korisnik\source\repos\MonoZadatak\Test\bin\Debug\net6.0\Autofac.dll
+C:\Users\korisnik\source\repos\MonoZadatak\Test\bin\Debug\net6.0\AutoMapper.dll
 C:\Users\korisnik\source\repos\MonoZadatak\Test\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\korisnik\source\repos\MonoZadatak\Test\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-C:\Users\korisnik\source\repos\MonoZadatak\Test\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\korisnik\source\repos\MonoZadatak\Test\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\korisnik\source\repos\MonoZadatak\Test\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
 C:\Users\korisnik\source\repos\MonoZadatak\Test\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
@@ -17,6 +17,10 @@ C:\Users\korisnik\source\repos\MonoZadatak\Test\bin\Debug\net6.0\Microsoft.Exten
 C:\Users\korisnik\source\repos\MonoZadatak\Test\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\korisnik\source\repos\MonoZadatak\Test\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
 C:\Users\korisnik\source\repos\MonoZadatak\Test\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
+C:\Users\korisnik\source\repos\MonoZadatak\Test\bin\Debug\net6.0\Npgsql.dll
+C:\Users\korisnik\source\repos\MonoZadatak\Test\bin\Debug\net6.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\korisnik\source\repos\MonoZadatak\Test\bin\Debug\net6.0\Project.Service.dll
+C:\Users\korisnik\source\repos\MonoZadatak\Test\bin\Debug\net6.0\Project.Service.pdb
 C:\Users\korisnik\source\repos\MonoZadatak\Test\obj\Debug\net6.0\Test.csproj.AssemblyReference.cache
 C:\Users\korisnik\source\repos\MonoZadatak\Test\obj\Debug\net6.0\Test.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\korisnik\source\repos\MonoZadatak\Test\obj\Debug\net6.0\Test.AssemblyInfoInputs.cache
@@ -28,9 +32,5 @@ C:\Users\korisnik\source\repos\MonoZadatak\Test\obj\Debug\net6.0\refint\Test.dll
 C:\Users\korisnik\source\repos\MonoZadatak\Test\obj\Debug\net6.0\Test.pdb
 C:\Users\korisnik\source\repos\MonoZadatak\Test\obj\Debug\net6.0\Test.genruntimeconfig.cache
 C:\Users\korisnik\source\repos\MonoZadatak\Test\obj\Debug\net6.0\ref\Test.dll
-C:\Users\korisnik\source\repos\MonoZadatak\Test\bin\Debug\net6.0\Npgsql.dll
-C:\Users\korisnik\source\repos\MonoZadatak\Test\bin\Debug\net6.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
-C:\Users\korisnik\source\repos\MonoZadatak\Test\bin\Debug\net6.0\Project.Service.dll
-C:\Users\korisnik\source\repos\MonoZadatak\Test\bin\Debug\net6.0\Project.Service.pdb
-C:\Users\korisnik\source\repos\MonoZadatak\Test\bin\Debug\net6.0\Ninject.dll
-C:\Users\korisnik\source\repos\MonoZadatak\Test\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\korisnik\source\repos\MonoZadatak\Test\bin\Debug\net6.0\Humanizer.dll
+C:\Users\korisnik\source\repos\MonoZadatak\Test\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
