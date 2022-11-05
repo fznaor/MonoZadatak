@@ -105,7 +105,8 @@ namespace Project.Service
                     return false;
                 }
                 _mapper.Map(make, toUpdate);
-                return await _context.SaveChangesAsync() > 0;
+                await _context.SaveChangesAsync();
+                return true;
             }
             catch (Exception ex)
             {

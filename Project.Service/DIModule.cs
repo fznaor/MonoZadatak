@@ -14,6 +14,8 @@ namespace Project.Service
             builder.RegisterType<VehicleContext>().As<IVehicleContext>();
             builder.RegisterType<VehicleMakeService>().As<IVehicleMakeService>();
             builder.RegisterType<VehicleModelService>().As<IVehicleModelService>();
+            builder.RegisterType<VehicleModel>().As<IVehicleModel>();
+            builder.RegisterType<VehicleMake>().As<IVehicleMake>();
         }
     }
 }
