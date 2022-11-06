@@ -24,3 +24,18 @@ body {
 .col2 {
     width: 20%; 
 }
+
+#pagingTable td{
+    font-size: 20px;
+    padding: 0 5px;
+    width: 30px;
+    text-align: center;
+}
+
+#pagingTable td a{
+    text-decoration: none;
+}
+
+#pagingTable td a:hover{
+    text-decoration: underline;
+}

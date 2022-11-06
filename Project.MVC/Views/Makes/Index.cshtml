@@ -55,24 +55,44 @@
     </tbody>
 </table>
 
-@{
-    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
-    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
-}
+<table id="pagingTable" cellpadding="0" cellspacing="0">
+    <tr>
+        @* always show at most five page links *@
+        @{
+            int start = Model.PageIndex - 2;
+            int end = Model.PageIndex + 2;
 
-<a asp-action="Index"
-   asp-route-sortOrder="@ViewData["SortOrder"]"
-   asp-route-sortBy="@ViewData["SortBy"]"
-   asp-route-pageNumber="@(Model.PageIndex - 1)"
-   asp-route-currentFilter="@ViewData["CurrentFilter"]"
-   class="btn btn-default @prevDisabled">
-    Previous
-</a>
-<a asp-action="Index"
-   asp-route-sortOrder="@ViewData["SortOrder"]"
-   asp-route-sortBy="@ViewData["SortBy"]"
-   asp-route-pageNumber="@(Model.PageIndex + 1)"
-   asp-route-currentFilter="@ViewData["CurrentFilter"]"
-   class="btn btn-default @nextDisabled">
-    Next
-</a>
+            if (end > Model.TotalPages)
+            {
+                start -= (end - Model.TotalPages);
+                end = Model.TotalPages;
+            }
+            if (start <= 0)
+            {
+                end -= start - 1;
+                start = 1;
+            }
+
+            end = end > Model.TotalPages ? Model.TotalPages : end;
+        }
+        @for (int i = start; i <= end; i++)
+        {
+            <td>
+                @if (i != Model.PageIndex)
+                {
+                    <a asp-action="Index"
+                    asp-route-sortOrder="@ViewData["SortOrder"]"
+                    asp-route-sortBy="@ViewData["SortBy"]"
+                    asp-route-pageNumber="@i"
+                    asp-route-currentFilter="@ViewData["CurrentFilter"]">
+                    @i
+                    </a>
+                }
+                else
+                {
+                    <span>@i</span>
+                }
+            </td>
+        }
+    </tr>
+</table>
