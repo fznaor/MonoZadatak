@@ -25,6 +25,10 @@ body {
     width: 20%; 
 }
 
+.col3{
+    width: 30%;
+}
+
 #pagingTable td{
     font-size: 20px;
     padding: 0 5px;
@@ -32,10 +36,10 @@ body {
     text-align: center;
 }
 
-#pagingTable td a{
+table a{
     text-decoration: none;
 }
 
-#pagingTable td a:hover{
+table a:hover{
     text-decoration: underline;
 }

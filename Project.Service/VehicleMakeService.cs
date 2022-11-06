@@ -45,6 +45,23 @@ namespace Project.Service
             }
         }
 
+        public async Task<List<IVehicleMake>> GetAllMakes()
+        {
+            try
+            {
+                var data = from m in _context.Makes select m;
+
+                data = SortMakes(data, new SortSettings("Name", true));
+
+                var items = await data.ToListAsync();
+                return new List<IVehicleMake>(_mapper.Map<List<VehicleMake>>(items));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public IQueryable<VehicleMakeEntity> SortMakes(IQueryable<VehicleMakeEntity> data, SortSettings settings)
         {
             switch (settings.SortBy)

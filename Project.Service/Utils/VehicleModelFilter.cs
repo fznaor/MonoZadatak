@@ -8,12 +8,12 @@ namespace Project.Service
 {
     public class VehicleModelFilter
     {
-        public string MakeFilter { get; set; }
+        public int? MakeIdFilter { get; set; }
         public string NameFilter { get; set; }
 
-        public VehicleModelFilter(string makeFilter, string nameFilter)
+        public VehicleModelFilter(int? makeIdFilter, string nameFilter)
         {
-            MakeFilter = makeFilter;
+            MakeIdFilter = makeIdFilter;
             NameFilter = nameFilter;
         }
     }

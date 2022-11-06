@@ -24,6 +24,9 @@ namespace Project.MVC
                 cfg.CreateMap<VehicleMakeViewModel, IVehicleMake>().As<VehicleMake>();
                 cfg.CreateMap<IVehicleMake, VehicleMakeViewModel>();
                 cfg.CreateMap<VehicleMakeViewModel, VehicleMake>();
+                cfg.CreateMap<VehicleModelViewModel, IVehicleModel>().As<VehicleModel>();
+                cfg.CreateMap<IVehicleModel, VehicleModelViewModel>();
+                cfg.CreateMap<VehicleModelViewModel, VehicleModel>();
                 cfg.CreateMap(typeof(PaginatedList<>), typeof(PaginatedList<>)).ConvertUsing(typeof(PaginatedListConverter<,>));
 
             })).AsSelf().SingleInstance();

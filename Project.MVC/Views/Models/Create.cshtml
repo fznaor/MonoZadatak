@@ -1,4 +1,4 @@
-﻿@model VehicleMakeViewModel
+﻿@model VehicleModelViewModel
 
 @{
     ViewData["Title"] = "Create";
@@ -6,7 +6,7 @@
 
 <h1>Create</h1>
 
-<h4>Vehicle make</h4>
+<h4>Vehicle model</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -21,6 +21,13 @@
                 <label asp-for="Abbreviation" class="control-label"></label>
                 <input asp-for="Abbreviation" class="form-control" />
                 <span asp-validation-for="Abbreviation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MakeId" class="control-label"></label>
+                @Html.DropDownListFor(
+                    x => Model.MakeId,
+                    new SelectList(Model.Makes, "VehicleMakeId", "Name", Model.MakeId))
+                <span asp-validation-for="MakeId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

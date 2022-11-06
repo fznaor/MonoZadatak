@@ -103,7 +103,6 @@ namespace Project.MVC.Controllers
         }
 
         // POST: Makes/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("VehicleMakeId,Name,Abbreviation")] VehicleMakeViewModel make)
@@ -132,7 +131,7 @@ namespace Project.MVC.Controllers
             return View(make);
         }
 
-        // GET: VehicleMakeEntities/Delete/5
+        // GET: Makes/Delete/5
         public async Task<IActionResult> Delete(int id)
         {
             VehicleMakeViewModel make;
@@ -147,7 +146,7 @@ namespace Project.MVC.Controllers
             return View(make);
         }
 
-        // POST: VehicleMakeEntities/Delete/5
+        // POST: Makes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

@@ -47,9 +47,9 @@ namespace Project.Service
             {
                 data = data.Where(m => m.Name.ToUpper().Contains(filter.NameFilter.ToUpper()));
             }
-            if (!string.IsNullOrEmpty(filter.MakeFilter))
+            if (filter.MakeIdFilter != null & filter.MakeIdFilter > 0)
             {
-                data = data.Where(m => m.Make.Name.ToUpper().Contains(filter.MakeFilter.ToUpper()));
+                data = data.Where(m => m.MakeId == filter.MakeIdFilter);
             }
             return data;
         }
@@ -76,6 +76,15 @@ namespace Project.Service
                     {
                         return data.OrderByDescending(m => m.Abbreviation);
                     }
+                case "Make":
+                    if (settings.SortAscending)
+                    {
+                        return data.OrderBy(m => m.Make.Name);
+                    }
+                    else
+                    {
+                        return data.OrderByDescending(m => m.Make.Name);
+                    }
                 default:
                     return data;
             }
@@ -83,7 +92,7 @@ namespace Project.Service
 
         public async Task<IVehicleModel> GetModelById(int id)
         {
-            var model = await _context.Makes.FindAsync(id);
+            var model = await _context.Models.Include(m => m.Make).FirstOrDefaultAsync(m => m.VehicleModelId == id);
             if (model == null)
             {
                 throw new KeyNotFoundException("No model with given id found");

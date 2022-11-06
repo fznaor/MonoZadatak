@@ -5,6 +5,7 @@
         Task<bool> AddMake(IVehicleMake make);
         Task<bool> DeleteMake(int id);
         Task<PaginatedList<IVehicleMake>> GetAllMakes(SortSettings sortSettings, string searchTerm, PaginationSettings paginationSettings);
+        Task<List<IVehicleMake>> GetAllMakes();
         Task<IVehicleMake> GetMakeById(int id);
         Task<bool> UpdateMake(IVehicleMake make);
     }

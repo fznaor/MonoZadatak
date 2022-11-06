@@ -1,0 +1,113 @@
+﻿@model VehicleModelIndexViewModel
+
+@{
+    ViewData["Title"] = "Models";
+    var newSortOrder = (string)ViewData["SortOrder"] == "asc" ? "desc" : "asc";
+}
+
+<h1>Models</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Search by make: 
+            @Html.DropDownListFor(
+                    x => x.SelectedMakeId,
+                    new SelectList(Model.Makes, "VehicleMakeId", "Name", Model.SelectedMakeId),
+                    "Select make"
+               )
+        </p>
+        <p>
+            <input type="hidden" name="sortOrder" value="@ViewData["SortOrder"]" />
+            <input type="hidden" name="sortBy" value="@ViewData["SortBy"]" />
+            Search by name: <input type="text" name="nameSearchString" value="@ViewData["NameFilter"]" />
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <a asp-action="Index">Back to Full List</a>
+        </p>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th class="col3">
+                <a asp-action="Index" asp-route-sortOrder="@newSortOrder" asp-route-sortBy="Name" asp-route-nameFilter="@ViewData["NameFilter"]" asp-route-selectedMakeId="@Model.SelectedMakeId">Name</a>
+            </th>
+            <th class="col3">
+                <a asp-action="Index" asp-route-sortOrder="@newSortOrder" asp-route-sortBy="Abbreviation" asp-route-nameFilter="@ViewData["NameFilter"]" asp-route-selectedMakeId="@Model.SelectedMakeId">Abbreviation</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@newSortOrder" asp-route-sortBy="Make" asp-route-nameFilter="@ViewData["NameFilter"]" asp-route-selectedMakeId="@Model.SelectedMakeId">Make</a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Models)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Abbreviation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Make.Name)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.VehicleModelId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.VehicleModelId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.VehicleModelId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<table id="pagingTable" cellpadding="0" cellspacing="0">
+    <tr>
+        @* always show at most five page links *@
+        @{
+            int start = Model.Models.PageIndex - 2;
+            int end = Model.Models.PageIndex + 2;
+
+            if (end > Model.Models.TotalPages)
+            {
+                start -= (end - Model.Models.TotalPages);
+                end = Model.Models.TotalPages;
+            }
+            if (start <= 0)
+            {
+                end -= start - 1;
+                start = 1;
+            }
+
+            end = end > Model.Models.TotalPages ? Model.Models.TotalPages : end;
+        }
+        @for (int i = start; i <= end; i++)
+        {
+            <td>
+                @if (i != Model.Models.PageIndex)
+                {
+                    <a asp-action="Index"
+                       asp-route-sortOrder="@ViewData["SortOrder"]"
+                       asp-route-sortBy="@ViewData["SortBy"]"
+                       asp-route-pageNumber="@i"
+                       asp-route-nameFilter="@ViewData["NameFilter"]"
+                       asp-route-selectedMakeId="@Model.SelectedMakeId">
+                        @i
+                    </a>
+                }
+                else
+                {
+                    <span>@i</span>
+                }
+            </td>
+        }
+    </tr>
+</table>
