@@ -7,6 +7,12 @@
 <h1>Create</h1>
 
 <h4>Vehicle model</h4>
+@if (ViewData["Error"] != null)
+{
+    <div class="alert alert-primary" role="alert">
+        Database insertion failed, make sure that a record with the same name doesn't already exist!
+    </div>
+}
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -22,7 +28,7 @@
                 <input asp-for="Abbreviation" class="form-control" />
                 <span asp-validation-for="Abbreviation" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group makeSelector">
                 <label asp-for="MakeId" class="control-label"></label>
                 @Html.DropDownListFor(
                     x => Model.MakeId,

@@ -43,3 +43,7 @@ table a{
 table a:hover{
     text-decoration: underline;
 }
+
+.makeSelector{
+    margin: 10px 0;
+}

@@ -43,7 +43,8 @@ namespace Project.MVC.Controllers
 
             var sortSettings = new SortSettings(sortBy, sortOrder == "asc");
 
-            var models = await _modelService.GetAllModels(sortSettings, new VehicleModelFilter(selectedMakeId, nameSearchString), new PaginationSettings(pageNumber, pageSize));
+            var models = await _modelService.GetAllModels(sortSettings, new VehicleModelFilter(selectedMakeId, nameSearchString), 
+                                                          new PaginationSettings(pageNumber, pageSize));
             var makes = await _makeService.GetAllMakes();
 
             return View(new VehicleModelIndexViewModel(models, makes));
@@ -86,7 +87,9 @@ namespace Project.MVC.Controllers
                 }
                 catch (Exception)
                 {
-                    return StatusCode(500);
+                    ViewData["Error"] = "Error";
+                    model.Makes = await _makeService.GetAllMakes();
+                    return View(model);
                 }
             }
             model.Makes = await _makeService.GetAllMakes();
@@ -132,10 +135,13 @@ namespace Project.MVC.Controllers
                 }
                 catch (Exception)
                 {
-                    return StatusCode(500);
+                    ViewData["Error"] = "Error";
+                    model.Makes = await _makeService.GetAllMakes();
+                    return View(model);
                 }
                 return RedirectToAction(nameof(Index));
             }
+            model.Makes = await _makeService.GetAllMakes();
             return View(model);
         }
         

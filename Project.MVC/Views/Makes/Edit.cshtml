@@ -7,6 +7,12 @@
 <h1>Edit</h1>
 
 <h4>Vehicle make</h4>
+@if (ViewData["Error"] != null)
+{
+    <div class="alert alert-primary" role="alert">
+        Database update failed, make sure that a record with the same name doesn't already exist!
+    </div>
+}
 <hr />
 <div class="row">
     <div class="col-md-4">

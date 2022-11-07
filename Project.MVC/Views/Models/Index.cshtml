@@ -35,13 +35,28 @@
     <thead>
         <tr>
             <th class="col3">
-                <a asp-action="Index" asp-route-sortOrder="@newSortOrder" asp-route-sortBy="Name" asp-route-nameFilter="@ViewData["NameFilter"]" asp-route-selectedMakeId="@Model.SelectedMakeId">Name</a>
+                <a asp-action="Index" 
+                asp-route-sortOrder="@newSortOrder" 
+                asp-route-sortBy="Name"
+                asp-route-nameFilter="@ViewData["NameFilter"]" 
+                asp-route-selectedMakeId="@Model.SelectedMakeId">
+                Name</a>
             </th>
             <th class="col3">
-                <a asp-action="Index" asp-route-sortOrder="@newSortOrder" asp-route-sortBy="Abbreviation" asp-route-nameFilter="@ViewData["NameFilter"]" asp-route-selectedMakeId="@Model.SelectedMakeId">Abbreviation</a>
+                <a asp-action="Index" 
+                asp-route-sortOrder="@newSortOrder" 
+                asp-route-sortBy="Abbreviation" 
+                asp-route-nameFilter="@ViewData["NameFilter"]" 
+                asp-route-selectedMakeId="@Model.SelectedMakeId">
+                Abbreviation</a>
             </th>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@newSortOrder" asp-route-sortBy="Make" asp-route-nameFilter="@ViewData["NameFilter"]" asp-route-selectedMakeId="@Model.SelectedMakeId">Make</a>
+                <a asp-action="Index" 
+                asp-route-sortOrder="@newSortOrder" 
+                asp-route-sortBy="Make" 
+                asp-route-nameFilter="@ViewData["NameFilter"]" 
+                asp-route-selectedMakeId="@Model.SelectedMakeId">
+                Make</a>
             </th>
             <th></th>
         </tr>

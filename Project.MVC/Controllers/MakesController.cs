@@ -81,7 +81,8 @@ namespace Project.MVC.Controllers
                 }
                 catch (Exception)
                 {
-                    return StatusCode(500);
+                    ViewData["Error"] = "Error";
+                    return View(make);
                 }
             }
             return View(make);
@@ -124,7 +125,8 @@ namespace Project.MVC.Controllers
                 }
                 catch (Exception)
                 {
-                    return StatusCode(500);
+                    ViewData["Error"] = "Error";
+                    return View(make);
                 }
                 return RedirectToAction(nameof(Index));
             }

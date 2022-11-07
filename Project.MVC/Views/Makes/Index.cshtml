@@ -27,10 +27,18 @@
     <thead>
         <tr>
             <th class="col1">
-                <a asp-action="Index" asp-route-sortOrder="@newSortOrder" asp-route-sortBy="Name" asp-route-currentFilter="@ViewData["CurrentFilter"]">Name</a>
+                <a asp-action="Index" 
+                asp-route-sortOrder="@newSortOrder" 
+                asp-route-sortBy="Name" 
+                asp-route-currentFilter="@ViewData["CurrentFilter"]">
+                Name</a>
             </th>
             <th class="col2">
-                <a asp-action="Index" asp-route-sortOrder="@newSortOrder" asp-route-sortBy="Abbreviation" asp-route-currentFilter="@ViewData["CurrentFilter"]">Abbreviation</a>
+                <a asp-action="Index" 
+                asp-route-sortOrder="@newSortOrder" 
+                asp-route-sortBy="Abbreviation" 
+                asp-route-currentFilter="@ViewData["CurrentFilter"]">
+                Abbreviation</a>
             </th>
             <th></th>
         </tr>
